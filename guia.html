@@ -203,6 +203,18 @@ details.acc .in > :last-child{margin-bottom:0}
 .who{display:inline-block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:.15rem .5rem;border-radius:4px;background:var(--soft)}
 footer{padding-block:2rem;color:var(--muted);font-size:.85rem}
 
+
+/* turnos por color y ajustes de celular */
+:root{--t1:#9a6f1c;--t2:#b23a5e;--t3:#2f62ad;--t0:#5b546b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--t1:#e2bd72;--t2:#f08fa5;--t3:#93b6f0;--t0:#cfc8de}}
+:root[data-theme="dark"]{--t1:#e2bd72;--t2:#f08fa5;--t3:#93b6f0;--t0:#cfc8de}
+.who.t1,.who.t2,.who.t3,.who.t0{color:var(--paper)}
+.who.t1{background:var(--t1)}.who.t2{background:var(--t2)}.who.t3{background:var(--t3)}.who.t0{background:var(--t0)}
+.turns th .who{margin-bottom:.25rem}
+.turns td:last-child{min-width:16rem}
+.turns td:nth-child(2),.turns td:nth-child(3){white-space:nowrap}
+.hero .btns{margin-bottom:0}
+
 @media (max-width:960px){
   .layout{grid-template-columns:minmax(0,1fr);gap:0;padding-inline:16px}
   .toc{position:sticky;top:env(safe-area-inset-top,0px);height:auto;z-index:5;background:var(--paper);padding-block:.7rem;border-bottom:1px solid var(--line);overflow:visible}
@@ -213,7 +225,14 @@ footer{padding-block:2rem;color:var(--muted);font-size:.85rem}
   .toc li a{display:flex;white-space:nowrap;border:1px solid var(--line);padding:.25rem .6rem}
   .toc li a .ck{display:none}
   .g2,.g3,.gloss{grid-template-columns:minmax(0,1fr)}
-  html{scroll-padding-top:8.5rem}
+  .prog p{display:none}
+  .prog{margin:.3rem 0 .45rem}
+  .toc{padding-block:.55rem}
+  html{scroll-padding-top:6.5rem}
+  .score{padding:.5rem .8rem;gap:.5rem;font-size:.9rem}
+  .score b{font-size:1.15rem}
+  .score #qMsg{font-size:.8rem;flex-basis:100%;order:3}
+  .score .btn{padding:.3rem .7rem}
   .tline::before{left:5.2rem}
   .tline li{grid-template-columns:5.2rem minmax(0,1fr);gap:1rem}
   .tline li::after{left:calc(5.2rem - 5px)}
@@ -237,6 +256,7 @@ footer{padding-block:2rem;color:var(--muted);font-size:.85rem}
   <p class="eyebrow">Apreciación Musical · Prof. Hernán Javier Mejía Borja</p>
   <h1>El Romanticismo, <em>de pi a pa</em></h1>
   <p class="lead">Todo lo que necesitan para entender el tema, exponerlo con seguridad y responder las preguntas del profe. Lean en orden, escuchen los ejemplos, marquen cada lección como aprendida y terminen con las tarjetas y el quiz.</p>
+  <div class="btns" style="margin-top:1.2rem"><a class="btn ext" href="https://el-romanticismo-musical.vercel.app" target="_blank" rel="noopener">Ver la presentación</a><a class="btn ghost" href="#expo">¿Qué me toca decir?</a></div>
   <div class="route"><span><b>1</b> Leer</span><span><b>2</b> Escuchar los ejemplos</span><span><b>3</b> Repasar con tarjetas</span><span><b>4</b> Quiz final</span><span><b>5</b> Preguntas del profe</span></div>
 </header>
 
@@ -456,29 +476,41 @@ footer{padding-block:2rem;color:var(--muted);font-size:.85rem}
   </ul>
 </section>
 
-<section class="lesson" id="expo" data-title="Checklist de la exposición">
+<section class="lesson" id="expo" data-title="Quién dice qué">
   <div class="staff"></div>
   <div class="lhead"><span class="num">Lección 13</span><label class="learned"><input type="checkbox" data-learn="expo"> Ya lo entendí</label></div>
-  <h2>Lo que pide el profe y <em>quién lo cubre</em></h2>
-  <div class="tw"><table>
-    <thead><tr><th>Punto pedido</th><th>Diapositiva</th><th>Quién</th></tr></thead>
+  <h2>La exposición: <em>quién dice qué</em></h2>
+  <p>Son <strong>25 minutos de exposición y 7 de Kahoot</strong>. La presentación no muestra nombres: la <strong>línea de color</strong> en la parte de arriba de la pantalla dice de quién es el turno.</p>
+  <div class="tw"><table class="turns">
+    <thead><tr><th>Turno</th><th>Diapositivas</th><th>Minuto</th><th>Ideas que no se pueden olvidar</th></tr></thead>
     <tbody>
-      <tr><td>Contexto social, cultural y político</td><td>4, 5, 6</td><td><span class="who">Oscar Felipe</span></td></tr>
-      <tr><td>Sucesos relevantes que marcaron el arte</td><td>7</td><td><span class="who">Oscar Felipe</span></td></tr>
-      <tr><td>Personajes relevantes (no músicos)</td><td>8</td><td><span class="who">Juan Felipe</span></td></tr>
-      <tr><td>Moda de la época (máx. 1 minuto)</td><td>9</td><td><span class="who">Juan Felipe</span></td></tr>
-      <tr><td>Características musicales</td><td>10, 11, 12</td><td><span class="who">Juan Felipe</span></td></tr>
-      <tr><td>Formas musicales</td><td>13</td><td><span class="who">Juan Felipe</span></td></tr>
-      <tr><td>Compositores (máx. 3, sin fechas ni biografía, por qué importan)</td><td>14–17</td><td><span class="who">Juan Esteban</span></td></tr>
-      <tr><td>Al menos una mujer música</td><td>16 (Clara Schumann)</td><td><span class="who">Juan Esteban</span></td></tr>
-      <tr><td>Obras</td><td>18</td><td><span class="who">Juan Esteban</span></td></tr>
-      <tr><td>Instrumentos principales (máx. 2)</td><td>19 (piano y violín)</td><td><span class="who">Juan Esteban</span></td></tr>
-      <tr><td>Datos curiosos</td><td>20</td><td><span class="who">Juan Esteban</span></td></tr>
-      <tr><td>Conclusiones</td><td>21</td><td><span class="who">Los tres</span></td></tr>
-      <tr><td>Actividad para socializar</td><td>22 (Kahoot con premios)</td><td><span class="who">Oscar Felipe</span></td></tr>
+      <tr><th><span class="who t1">Dorado</span><br>Oscar Felipe</th><td>1–7</td><td>0:00–8:15</td><td>Acorde de Tristán y la pregunta «¿qué sintieron?» · emoción por encima de la razón · Revolución Francesa, Napoleón y la «Heroica» de Beethoven · burguesía y piano en la sala · rebelión contra la Ilustración y el cuadro de Friedrich · seis sucesos</td></tr>
+      <tr><th><span class="who t2">Rosado</span><br>Juan Felipe</th><td>8–13</td><td>8:15–16:15</td><td>Ocho personajes no músicos · moda en máximo 1 minuto · nueve características · audios de dinámica, rubato, cromatismo y Tristán · clásico vs. romántico · formas musicales</td></tr>
+      <tr><th><span class="who t3">Azul</span><br>Juan Esteban</th><td>14–20</td><td>16:15–24:00</td><td>Chopin, Clara Schumann y Wagner <strong>sin fechas ni biografía</strong>, solo por qué importan · obras · piano y violín · seis datos curiosos</td></tr>
+      <tr><th><span class="who t0">Blanco</span><br>Los tres</th><td>21</td><td>24:00–25:00</td><td>Una conclusión cada uno, en orden dorado, rosado y azul</td></tr>
+      <tr><th><span class="who t1">Dorado</span><br>Oscar Felipe</th><td>22–23</td><td>25:00–32:00</td><td>Kahoot: él lo proyecta; Juan Felipe ayuda a entrar; Juan Esteban entrega los premios</td></tr>
     </tbody>
   </table></div>
-  <div class="btns"><a class="btn ext" target="_blank" rel="noopener" href="https://create.kahoot.it/details/romanticismo-la-musica-del-sentimiento/cc28c9ff-17f3-4b48-bfab-bc6a75c019d8">Abrir el Kahoot</a></div>
+  <h3>Lo que pide el profe y dónde lo cubrimos</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Punto pedido</th><th>Diapositiva</th><th>Turno</th></tr></thead>
+    <tbody>
+      <tr><td>Contexto social, cultural y político</td><td>4, 5, 6</td><td><span class="who t1">Dorado</span></td></tr>
+      <tr><td>Sucesos relevantes que marcaron el arte</td><td>7</td><td><span class="who t1">Dorado</span></td></tr>
+      <tr><td>Personajes relevantes (no músicos)</td><td>8</td><td><span class="who t2">Rosado</span></td></tr>
+      <tr><td>Moda de la época (máx. 1 minuto)</td><td>9</td><td><span class="who t2">Rosado</span></td></tr>
+      <tr><td>Características musicales</td><td>10, 11, 12</td><td><span class="who t2">Rosado</span></td></tr>
+      <tr><td>Formas musicales</td><td>13</td><td><span class="who t2">Rosado</span></td></tr>
+      <tr><td>Compositores (máx. 3, sin fechas ni biografía)</td><td>14–17</td><td><span class="who t3">Azul</span></td></tr>
+      <tr><td>Al menos una mujer música</td><td>16 (Clara Schumann)</td><td><span class="who t3">Azul</span></td></tr>
+      <tr><td>Obras</td><td>18</td><td><span class="who t3">Azul</span></td></tr>
+      <tr><td>Instrumentos principales (máx. 2)</td><td>19 (piano y violín)</td><td><span class="who t3">Azul</span></td></tr>
+      <tr><td>Datos curiosos</td><td>20</td><td><span class="who t3">Azul</span></td></tr>
+      <tr><td>Conclusiones</td><td>21</td><td><span class="who t0">Los tres</span></td></tr>
+      <tr><td>Actividad para socializar</td><td>22 (Kahoot con premios)</td><td><span class="who t1">Dorado</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="btns"><a class="btn ext" target="_blank" rel="noopener" href="https://el-romanticismo-musical.vercel.app">Ver la presentación</a></div>
 </section>
 
 <section class="lesson" id="profe" data-title="Preguntas del profe">
